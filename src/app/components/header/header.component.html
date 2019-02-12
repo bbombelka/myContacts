@@ -1,0 +1,32 @@
+<div class="mb-4">
+  <h1 class="p-3">
+    myContacts
+
+    <i (click)="showInfo()" class="fas fa-info m-3 float-right" style="cursor: pointer"></i>
+    <i
+      (click)="toggleVisibility()"
+      class="fas fa-user-plus m-3 float-right"
+      style="cursor: pointer"
+    ></i>
+    <i
+      [hidden]="searchIsActive"
+      (click)="searchIsActive = !searchIsActive"
+      class="fas fa-search m-3 float-right"
+      style="cursor: pointer"
+    ></i>
+    <div [hidden]="!searchIsActive" class="searchSection float-right">
+      <input
+        (keyup)="onInput(searchQuery.value)"
+        class="mt-2 rounded"
+        type="text"
+        placeholder="Name ... phone... etc"
+        #searchQuery
+      />
+      <i
+        (click)="cancelSearch(); searchQuery.value = ''"
+        class="fas fa-times-circle m-3"
+        style="cursor: pointer"
+      ></i>
+    </div>
+  </h1>
+</div>

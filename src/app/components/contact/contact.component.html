@@ -1,0 +1,27 @@
+<li class="list-group-item my-3 mx-5">
+  <h5>
+    <img
+      class="img-thumbnail m-1 rounded"
+      alt="user avatar"
+      src="http://api.adorable.io/avatars/40/{{ contact.name }}.png"
+    />
+    {{ contact.name }}
+    <i
+      (click)="this.hidden = !this.hidden"
+      class="fas fa-angle-down ml-3"
+      [ngClass]="hidden ? null : 'visible'"
+    ></i>
+    <i class="fas fa-user-minus ml-3 float-right" (click)="onDelete(contact.id)"></i>
+    <i class="fas fa-user-edit ml-3 float-right" (click)="onEdit(contact.id)"></i>
+  </h5>
+
+  <ul [hidden]="hidden" class="list-group">
+    <li class="list-group-item">Phone: {{ contact.phone }}</li>
+    <li class="list-group-item">E-mail: {{ contact.email }}</li>
+    <ul class="list-group p-3">
+      Address:
+      <li class="list-group-item">Street: {{ contact.address.street }}</li>
+      <li class="list-group-item">City: {{ contact.address.city }}</li>
+    </ul>
+  </ul>
+</li>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACN,gBAAgB,EAAE,KAAK;CAAG",
+    "sources": [
+        "../src/app/components/contacts/contacts.component.sass"
+    ],
+    "names": [],
+    "file": "contacts.component.css"
+}

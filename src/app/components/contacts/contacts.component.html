@@ -1,0 +1,43 @@
+<app-header
+  (search)="searchContact($event)"
+  (searchMode)="searchMode = $event"
+  (show)="showForm = $event; isEdited = false"
+  (showAbout)="showAbout = $event"
+></app-header>
+<app-about (showAbout)="showAbout = $event" *ngIf="showAbout"></app-about>
+<app-form
+  *ngIf="showForm"
+  [currentContact]="currentContact"
+  (contact)="isEdited ? updateContact($event) : addContact($event)"
+  (show)="showFormFunc($event)"
+  [isEdited]="isEdited"
+></app-form>
+
+<div class="contacts">
+  <h3 [hidden]="searchMode" class="m-4">Contacts:</h3>
+  <h3 [hidden]="!searchMode" class="m-4">Results:</h3>
+  <ul *ngIf="contacts && isLoaded && !searchMode" class="list-group">
+    <app-contact
+      *ngFor="let contact of contacts"
+      [contact]="contact"
+      (deleteContactId)="deleteContact($event)"
+      (editContactId)="editContact($event)"
+      (show)="showForm = $event; isEdited = $event"
+    ></app-contact>
+  </ul>
+  <ul *ngIf="searchMode" class="list-group">
+    <app-contact
+      *ngFor="let contact of filteredForSearchContacts"
+      [contact]="contact"
+      (deleteContactId)="deleteContact($event)"
+      (editContactId)="editContact($event)"
+      (show)="showForm = $event; isEdited = $event"
+    ></app-contact>
+  </ul>
+  <h4 *ngIf="searchMode && filteredForSearchContacts.length === 0" class="m-3">
+    Sorry, no such contact.
+  </h4>
+  <ng-template #elseBlock>Contacts are loading...</ng-template>
+</div>
+<span *ngIf="isLoaded && !contacts">There are no contacts to display</span>
+<!-- https://youtu.be/Fdf5aTYRW0E?t=2158 -->

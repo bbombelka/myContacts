@@ -1,0 +1,86 @@
+<form class="card p-4 m-4">
+  <i (click)="disableVisibility()" class="fas fa-window-close"></i>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="name">Name: </label><br />
+      <input
+        (blur)="lengthValidation('name', name.value.length)"
+        [(ngModel)]="currentContact.name"
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Enter name..."
+        [ngClass]="isValid.name ? null : 'invalid'"
+        #name
+      />
+      <div class="warning" [hidden]="isValid.name">You must enter at least 3 characters</div>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone: </label><br />
+      <input
+        (blur)="lengthValidation('phone', phone.value.length)"
+        [(ngModel)]="currentContact.phone"
+        type="text"
+        name="phone"
+        id="phone"
+        placeholder="Enter phone..."
+        [ngClass]="isValid.phone ? null : 'invalid'"
+        #phone
+      />
+      <div class="warning" [hidden]="isValid.phone">You must enter at least 3 characters</div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email: </label><br />
+      <input
+        (blur)="lengthValidation('email', email.value.length)"
+        [(ngModel)]="currentContact.email"
+        type="text"
+        name="email"
+        id="email"
+        placeholder="Enter email ..."
+        [ngClass]="isValid.email ? null : 'invalid'"
+        #email
+      />
+      <div class="warning" [hidden]="isValid.email">You must enter at least 3 characters</div>
+    </div>
+    <div class="form-group">
+      <label for="street">Street: </label><br />
+      <input
+        [(ngModel)]="currentContact.address.street"
+        type="text"
+        name="street"
+        id="street"
+        placeholder="Enter street ..."
+        #street
+      />
+    </div>
+    <div class="form-group">
+      <label for="city">City: </label><br />
+      <input
+        [(ngModel)]="currentContact.address.city"
+        type="text"
+        name="city"
+        id="city"
+        placeholder="Enter city ..."
+        #city
+      />
+    </div>
+    <input [hidden]="true" type="text" name="id" [(ngModel)]="currentContact.id" #id />
+
+    <button
+      [disabled]="name.value.length < 3 || phone.value.length < 3 || email.value.length < 3"
+      *ngIf="!isEdited"
+      (click)="onSubmit(name.value, phone.value, email.value, street.value, city.value)"
+      class="btn btn-primary btn-dark btn-sm"
+    >
+      Add Contact
+    </button>
+    <button
+      *ngIf="isEdited"
+      (click)="onSubmit(name.value, phone.value, email.value, street.value, city.value, id.value)"
+      class="btn btn-primary btn-dark btn-sm"
+    >
+      Edit Contact
+    </button>
+  </div>
+</form>

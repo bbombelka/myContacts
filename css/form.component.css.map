@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,gBAAgB,CAAC;EACb,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,GAAG;EACR,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,OAAO;CAAG;;AAEtB,AAAA,QAAQ,CAAC;EACP,OAAO,EAAE,aAAa;CAAG;;AAE3B,AAAA,QAAQ,CAAC;EACL,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,GAAG;CAAG",
+    "sources": [
+        "../src/app/components/form/form.component.sass"
+    ],
+    "names": [],
+    "file": "form.component.css"
+}
